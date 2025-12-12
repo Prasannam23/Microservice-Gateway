@@ -14,7 +14,7 @@ export const resolvers = {
     },
 
     followers: async (
-      _parent: any,
+      parent: any,
       { userId, limit, offset }: { userId: string; limit: number; offset: number }
     ): Promise<any> => {
       try {
@@ -31,7 +31,7 @@ export const resolvers = {
     },
 
     following: async (
-      _parent: any,
+      parent: any,
       { userId, limit, offset }: { userId: string; limit: number; offset: number }
     ): Promise<any> => {
       try {
@@ -48,7 +48,7 @@ export const resolvers = {
     },
 
     followCounts: async (
-      _parent: any,
+      parent: any,
       { userId }: { userId: string }
     ): Promise<any> => {
       try {
@@ -63,7 +63,7 @@ export const resolvers = {
     },
 
     isFollowing: async (
-      _parent: any,
+      parent: any,
       { followerId, followeeId }: { followerId: string; followeeId: string }
     ): Promise<any> => {
       try {
@@ -77,7 +77,7 @@ export const resolvers = {
 
   Mutation: {
     follow: async (
-      _parent: any,
+      parent: any,
       { followerId, followeeId }: { followerId: string; followeeId: string }
     ): Promise<boolean> => {
       try {
@@ -89,7 +89,7 @@ export const resolvers = {
     },
 
     unfollow: async (
-      _parent: any,
+      parent: any,
       { followerId, followeeId }: { followerId: string; followeeId: string }
     ): Promise<boolean> => {
       try {

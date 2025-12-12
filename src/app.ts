@@ -51,7 +51,7 @@ type Mutation {
 export async function createApp(): Promise<Express> {
   const app = express();
 
-  app.get('/health', (_req, res) => {
+  app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });
   });
 
