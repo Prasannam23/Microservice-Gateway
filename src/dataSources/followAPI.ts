@@ -1,5 +1,11 @@
 import fetch from 'node-fetch';
 
+interface RequestOptions {
+  method: string;
+  headers: Record<string, string>;
+  body?: string;
+}
+
 export interface FollowServiceError {
   success: false;
   message: string;
