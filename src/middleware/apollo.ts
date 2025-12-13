@@ -20,6 +20,7 @@ export async function createApolloServer(): Promise<ApolloServer> {
   });
 
   await server.start();
+  
   return server;
 }
 
