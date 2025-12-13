@@ -20,13 +20,13 @@ export async function createApolloServer(): Promise<ApolloServer> {
   });
 
   await server.start();
-  
+
   return server;
 }
 
 export function createExpressMiddleware(
   server: ApolloServer
-): any {
+): ReturnType<typeof expressMiddleware> {
   return expressMiddleware(server, {
     context: async ({ req }) => ({
       authorization: req.headers.authorization

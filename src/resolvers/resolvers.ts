@@ -1,11 +1,11 @@
-import { followAPI } from '../dataSources/followAPI';
+import { followAPI, FollowServiceUser } from '../dataSources/followAPI';
 import { handleAPIError } from '../utils/errors';
 
 export const resolvers = {
   Query: {
     health: (): string => 'ok',
 
-    users: async (): Promise<any[]> => {
+    users: async (): Promise<FollowServiceUser[]> => {
       try {
         return await followAPI.getUsers();
       } catch (error) {
@@ -14,7 +14,7 @@ export const resolvers = {
     },
 
     followers: async (
-      parent: any,
+      _parent: unknown,
       { userId, limit, offset }: { userId: string; limit: number; offset: number }
     ): Promise<any> => {
       try {
@@ -31,7 +31,7 @@ export const resolvers = {
     },
 
     following: async (
-      parent: any,
+      _parent: unknown,
       { userId, limit, offset }: { userId: string; limit: number; offset: number }
     ): Promise<any> => {
       try {
