@@ -35,10 +35,10 @@ export class FollowServiceAPI {
   private async request<T>(
     method: string,
     path: string,
-    body?: any
+    body?: Record<string, unknown>
   ): Promise<T> {
     const url = `${this.baseUrl}${path}`;
-    const options: any = {
+    const options: RequestOptions = {
       method,
       headers: {
         'Content-Type': 'application/json'

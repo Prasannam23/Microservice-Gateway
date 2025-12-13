@@ -3,7 +3,6 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { resolvers } from '../resolvers/resolvers';
-import express from 'express';
 
 const typeDefs = readFileSync(resolve(__dirname, '../schema/typeDefs.ts'), 'utf-8')
   .split('export const typeDefs = `')[1]

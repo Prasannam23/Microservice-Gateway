@@ -16,7 +16,7 @@ export const resolvers = {
     followers: async (
       _parent: unknown,
       { userId, limit, offset }: { userId: string; limit: number; offset: number }
-    ): Promise<any> => {
+    ): Promise<{ total: number; items: FollowServiceUser[]; limit: number; offset: number }> => {
       try {
         const data = await followAPI.getFollowers(userId, limit, offset);
         return {
@@ -33,7 +33,7 @@ export const resolvers = {
     following: async (
       _parent: unknown,
       { userId, limit, offset }: { userId: string; limit: number; offset: number }
-    ): Promise<any> => {
+    ): Promise<{ total: number; items: FollowServiceUser[]; limit: number; offset: number }> => {
       try {
         const data = await followAPI.getFollowing(userId, limit, offset);
         return {
@@ -48,9 +48,9 @@ export const resolvers = {
     },
 
     followCounts: async (
-      parent: any,
+      _parent: unknown,
       { userId }: { userId: string }
-    ): Promise<any> => {
+    ): Promise<{ followersCount: number; followingCount: number }> => {
       try {
         const [followersCount, followingCount] = await Promise.all([
           followAPI.getFollowerCount(userId),
@@ -63,9 +63,9 @@ export const resolvers = {
     },
 
     isFollowing: async (
-      parent: any,
+      _parent: unknown,
       { followerId, followeeId }: { followerId: string; followeeId: string }
-    ): Promise<any> => {
+    ): Promise<{ isFollowing: boolean }> => {
       try {
         const isFollowing = await followAPI.isFollowing(followerId, followeeId);
         return { isFollowing };
@@ -77,7 +77,7 @@ export const resolvers = {
 
   Mutation: {
     follow: async (
-      parent: any,
+      _parent: unknown,
       { followerId, followeeId }: { followerId: string; followeeId: string }
     ): Promise<boolean> => {
       try {
@@ -89,7 +89,7 @@ export const resolvers = {
     },
 
     unfollow: async (
-      parent: any,
+      _parent: unknown,
       { followerId, followeeId }: { followerId: string; followeeId: string }
     ): Promise<boolean> => {
       try {

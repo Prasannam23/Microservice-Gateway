@@ -9,7 +9,11 @@ export class APIError extends GraphQLError {
     });
 
     if (originalError) {
-      (this as any).originalError = originalError;
+      Object.defineProperty(this, 'originalError', {
+        value: originalError,
+        enumerable: true,
+        writable: true
+      });
     }
 
     Object.setPrototypeOf(this, APIError.prototype);
